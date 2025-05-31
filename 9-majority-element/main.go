@@ -1,5 +1,7 @@
 package main
 
+import "math"
+
 func majorityElementWorst(nums []int) int {
 	length := len(nums)
 
@@ -34,8 +36,8 @@ func majorityElementBetter(nums []int) int {
 }
 
 func majorityElementOptimal(nums []int) int {
-	count := 1
-	majorityElem := nums[0]
+	count := 0
+	majorityElem := math.MinInt
 
 	for i := 1; i < len(nums); i++ {
 		if count == 0 {
