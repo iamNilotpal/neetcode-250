@@ -34,7 +34,24 @@ func findMaxConsecutiveOnesBruteForce(nums []int) int {
 	return maxCount
 }
 
+func findMaxConsecutiveOptimal(nums []int) int {
+	var count int
+	var maxCount int
+
+	for _, v := range nums {
+		if v == 1 {
+			count++
+		} else {
+			count = 0
+		}
+		maxCount = max(maxCount, count)
+	}
+
+	return maxCount
+}
+
 func main() {
 	arr := []int{1, 0, 1, 1, 0, 1, 1, 1}
 	fmt.Printf("findMaxConsecutiveOnesBruteForce: %+v \n", findMaxConsecutiveOnesBruteForce(arr))
+	fmt.Printf("findMaxConsecutiveOptimal: %+v \n", findMaxConsecutiveOptimal(arr))
 }
