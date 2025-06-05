@@ -46,9 +46,44 @@ func longestConsecutiveBetter(nums []int) int {
 	return longest
 }
 
+func longestConsecutiveOptimal(nums []int) int {
+	longest := 0
+	frequency := make(map[int]bool, len(nums))
+	for _, v := range nums {
+		frequency[v] = true
+	}
+
+	for key := range frequency {
+		previousValueExists, ok := frequency[key-1]
+		if ok || previousValueExists {
+			continue
+		}
+
+		count := 1
+		newKey := key + 1
+		var isExists bool
+
+		if exists, ok := frequency[newKey]; exists && ok {
+			isExists = true
+		}
+
+		for isExists {
+			count++
+			newKey++
+			exists, ok := frequency[newKey]
+			isExists = exists && ok
+		}
+
+		longest = max(longest, count)
+	}
+
+	return longest
+}
+
 func main() {
 	nums := []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
 
 	println("longestConsecutiveBruteForce", longestConsecutiveBruteForce(nums))
 	println("longestConsecutiveBetter", longestConsecutiveBetter(nums))
+	println("longestConsecutiveOptimal", longestConsecutiveOptimal(nums))
 }
