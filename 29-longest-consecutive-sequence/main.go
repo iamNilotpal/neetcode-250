@@ -28,22 +28,22 @@ func longestConsecutiveBruteForce(nums []int) int {
 func longestConsecutiveBetter(nums []int) int {
 	slices.Sort(nums)
 
-	longest := 0
-	lastLongest := 0
+	maxCount := 0
+	lastLongestCount := 0
 	lastSmallest := math.MinInt
 
 	for i := range nums {
 		if nums[i]-1 == lastSmallest {
-			lastLongest++
+			lastLongestCount++
 			lastSmallest = nums[i]
 		} else if nums[i] != lastSmallest {
-			lastLongest = 1
+			lastLongestCount = 1
 			lastSmallest = nums[i]
 		}
-		longest = max(longest, lastLongest)
+		maxCount = max(maxCount, lastLongestCount)
 	}
 
-	return longest
+	return maxCount
 }
 
 func longestConsecutiveOptimal(nums []int) int {

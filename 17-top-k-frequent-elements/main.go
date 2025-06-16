@@ -4,22 +4,18 @@ import "fmt"
 
 func topKFrequent(nums []int, k int) []int {
 	// Step 1: Calculate the frequency of each number.
-	// We use a hash map (map[int]int) where keys are the numbers from 'nums'
-	// and values are their respective counts.
 	frequency := make(map[int]int)
 	for _, v := range nums {
-		frequency[v] += 1 // Increment the count for each number encountered.
+		frequency[v] += 1
 	}
 
 	// Step 2: Create "buckets" based on frequency.
 	// This is the core idea of Bucket Sort or a variation of it.
 	// The index of the slice will represent the frequency, and the value at that index
 	// will be a slice of numbers that have that specific frequency.
-	// The maximum possible frequency is `len(nums)` (if all numbers are the same),
-	// so the size of `buckets` needs to be `len(nums) + 1` to accommodate frequencies from 0 to `len(nums)`.
-	buckets := make([][]int, len(nums))
+	buckets := make([][]int, len(nums)+1)
 	for i := range buckets {
-		buckets[i] = make([]int, 0, 1) // Initialize with capacity 1, as typically a bucket might hold one element.
+		buckets[i] = make([]int, 0, 1)
 	}
 
 	// Step 3: Populate the buckets.

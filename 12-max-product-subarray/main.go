@@ -15,21 +15,21 @@ func maxProductWorst(nums []int) int {
 }
 
 func maxProductOptimal(nums []int) int {
+	prefix := 1
+	suffix := 1
 	maxProduct := 0
-	prefixMaxProduct := 1
-	suffixMaxProduct := 1
 
 	for i, v := range nums {
-		if prefixMaxProduct == 0 {
-			prefixMaxProduct = 1
+		if prefix == 0 {
+			prefix = 1
 		}
-		if suffixMaxProduct == 0 {
-			suffixMaxProduct = 1
+		if suffix == 0 {
+			suffix = 1
 		}
 
-		prefixMaxProduct *= v
-		suffixMaxProduct *= nums[len(nums)-i-1]
-		maxProduct = max(maxProduct, prefixMaxProduct, suffixMaxProduct)
+		prefix *= v
+		suffix *= nums[len(nums)-i-1]
+		maxProduct = max(maxProduct, prefix, suffix)
 	}
 
 	return maxProduct
