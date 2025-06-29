@@ -56,6 +56,7 @@ func missingNumberOptimal2(nums []int) int {
 
 func main() {
 	arr := []int{9, 6, 4, 2, 3, 5, 7, 0, 1}
+
 	fmt.Printf("missingNumberBruteForce: %+v \n", missingNumberBruteForce(arr))
 	fmt.Printf("missingNumberBetter: %+v \n", missingNumberBetter(arr))
 	fmt.Printf("missingNumberOptimal1: %+v \n", missingNumberOptimal1(arr))

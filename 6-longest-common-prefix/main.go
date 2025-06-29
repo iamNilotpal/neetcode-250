@@ -1,8 +1,8 @@
 package main
 
 import (
-	"sort"    // Required for sorting strings
-	"strings" // Required for strings.Builder
+	"sort"
+	"strings"
 )
 
 func longestCommonPrefix(strs []string) string {
@@ -27,8 +27,7 @@ func longestCommonPrefix(strs []string) string {
 
 	// Intuition 3: Determine the maximum possible length of the LCP.
 	// The longest common prefix cannot be longer than the shortest of the two extreme strings.
-	// We only need to compare characters up to the length of the shorter of these two.
-	minLength := min(len(strs[0]), len(strs[len(strs)-1]))
+	minLength := len(strs[0])
 
 	// Intuition 4: Build the common prefix character by character.
 	// Use a strings.Builder for efficient string concatenation, as opposed to `+=`.
@@ -48,15 +47,6 @@ func longestCommonPrefix(strs []string) string {
 	}
 
 	return builder.String()
-}
-
-// Helper function for min (Go 1.21+ has built-in min)
-// If targeting older Go versions, you'd need to implement this.
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }
 
 func main() {
