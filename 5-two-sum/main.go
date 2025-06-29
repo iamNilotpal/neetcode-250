@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"slices"
 )
 
-func twoSum(nums []int, target int) []int {
+func twoSumBetter(nums []int, target int) []int {
 	// Intuition 1: Store numbers and their indices for quick lookups.
 	// We need to efficiently check if a "complement" (target - current_number) exists
 	// in the array. A hash map (or dictionary) is perfect for this, as it allows
@@ -49,6 +50,26 @@ func twoSum(nums []int, target int) []int {
 	return []int{}
 }
 
+func twoSumOptimal(nums []int, target int) []int {
+	slices.Sort(nums)
+
+	i := 0
+	j := len(nums) - 1
+
+	for i <= j {
+		if nums[i]+nums[j] == target {
+			return []int{i, j}
+		} else if nums[i]+nums[j] < target {
+			i++
+		} else {
+			j--
+		}
+	}
+
+	return []int{-1, -1}
+}
+
 func main() {
-	fmt.Printf("Two Sum: %+v\n", twoSum([]int{2, 7, 11, 15}, 9))
+	fmt.Printf("Two Sum Better: %+v\n", twoSumBetter([]int{2, 7, 11, 15}, 9))
+	fmt.Printf("Two Sum Optimal: %+v\n", twoSumOptimal([]int{2, 7, 11, 15}, 9))
 }
