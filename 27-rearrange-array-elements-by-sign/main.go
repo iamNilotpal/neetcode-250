@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func rearrangeArrayBruteForce(nums []int) []int {
 	length := len(nums)
@@ -27,7 +29,28 @@ func rearrangeArrayBruteForce(nums []int) []int {
 	return nums
 }
 
+func rearrangeArrayOptimal(nums []int) []int {
+	nextPositiveIdx := 0
+	nextNegativeIdx := 1
+	result := make([]int, len(nums))
+
+	for _, v := range nums {
+		if v >= 0 {
+			result[nextPositiveIdx] = v
+			nextPositiveIdx += 2
+		} else {
+			result[nextNegativeIdx] = v
+			nextNegativeIdx += 2
+		}
+	}
+
+	return result
+}
+
 func main() {
 	nums := []int{3, 1, -2, -5, 2, -4}
 	fmt.Printf("rearrangeArrayBruteForce: %+v \n", rearrangeArrayBruteForce(nums))
+
+	nums = []int{3, 1, -2, -5, 2, -4}
+	fmt.Printf("rearrangeArrayOptimal: %+v \n", rearrangeArrayOptimal(nums))
 }
