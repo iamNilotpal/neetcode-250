@@ -22,48 +22,46 @@ func unionOfTwoSortedArraysBruteForce(arr1, arr2 []int) []int {
 }
 
 func unionOfTwoSortedArraysOptimal(arr1, arr2 []int) []int {
-	k := -1
 	var i int
 	var j int
 	result := make([]int, 0, len(arr1)+len(arr2))
 
 	for i < len(arr1) && j < len(arr2) {
+		length := len(result)
+
 		if arr1[i] == arr2[j] {
-			if k <= 0 || result[k] != result[k-1] {
+			if length <= 1 || result[length-1] != result[length-2] {
 				result = append(result, arr1[i])
 			}
 			i++
 			j++
-			k++
 		} else if arr1[i] < arr2[j] {
-			if k <= 0 || result[k] != result[k-1] {
+			if length <= 1 || result[length-1] != result[length-2] {
 				result = append(result, arr1[i])
 			}
 			i++
-			k++
 		} else {
-			if k <= 0 || result[k] != result[k-1] {
+			if length <= 1 || result[length-1] != result[length-2] {
 				result = append(result, arr2[j])
 			}
 			j++
-			k++
 		}
 	}
 
 	for i < len(arr1) {
-		if k <= 0 || result[k] != result[k-1] {
+		length := len(result)
+		if length <= 1 || result[length-1] != result[length-2] {
 			result = append(result, arr1[i])
 		}
 		i++
-		k++
 	}
 
 	for j < len(arr2) {
-		if k <= 0 || result[k] != result[k-1] {
+		length := len(result)
+		if length <= 1 || result[length-1] != result[length-2] {
 			result = append(result, arr2[j])
 		}
 		j++
-		k++
 	}
 
 	return result[:]
