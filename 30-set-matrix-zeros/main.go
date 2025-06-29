@@ -26,11 +26,9 @@ func setZeroesBruteForce(matrix [][]int) {
 
 func markRow(matrix [][]int, row int) {
 	cols := len(matrix[0])
-	for i := row; i <= row; i++ {
-		for col := range cols {
-			if matrix[row][col] != 0 {
-				matrix[row][col] = -1
-			}
+	for col := range cols {
+		if matrix[row][col] != 0 {
+			matrix[row][col] = -1
 		}
 	}
 }
