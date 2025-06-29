@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 )
 
 func rotateBetter(nums []int, k int) {
@@ -94,9 +95,18 @@ func rotateBetter(nums []int, k int) {
 	}
 }
 
+func rotateOptimal(nums []int, k int) {
+	slices.Reverse(nums[:k])
+	slices.Reverse(nums[k:])
+	slices.Reverse(nums)
+}
+
 func main() {
 	array := []int{1, 2, 3, 4, 5, 6, 7}
-
 	rotateBetter(array, 3)
 	fmt.Printf("rotateBetter: %+v \n", array)
+
+	array = []int{1, 2, 3, 4, 5, 6, 7}
+	rotateOptimal(array, 3)
+	fmt.Printf("rotateOptimal: %+v \n", array)
 }
