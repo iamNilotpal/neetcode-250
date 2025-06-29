@@ -81,9 +81,12 @@ func longestConsecutiveOptimal(nums []int) int {
 }
 
 func main() {
-	nums := []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
-
+	nums := []int{100, 4, 200, 1, 3, 2}
 	println("longestConsecutiveBruteForce", longestConsecutiveBruteForce(nums))
+
+	nums = []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
 	println("longestConsecutiveBetter", longestConsecutiveBetter(nums))
+
+	nums = []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
 	println("longestConsecutiveOptimal", longestConsecutiveOptimal(nums))
 }
