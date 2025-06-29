@@ -1,7 +1,7 @@
 # NeetCode 250 – DSA Practice Solutions
 
 ![NeetCode](https://img.shields.io/badge/NeetCode-250%20Problems-blueviolet)
-![Language](https://img.shields.io/badge/language-Python-blue)
+![Language](https://img.shields.io/badge/language-Go-blue)
 ![Progress](https://img.shields.io/badge/Progress-In%20Progress-yellow)
 
 A personal repository to track and document my progress through the
