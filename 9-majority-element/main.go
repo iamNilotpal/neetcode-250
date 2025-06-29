@@ -9,12 +9,11 @@ func majorityElementWorst(nums []int) int {
 	length := len(nums)
 
 	// Outer loop: Pick each number 'num' to check if it's the majority element.
-	for i, num := range nums {
-		count := 1 // Initialize count for the current 'num'. Start with 1 because 'num' itself counts.
+	for _, num := range nums {
+		count := 0 // Initialize count for the current 'num'. Start with 1 because 'num' itself counts.
 
 		// Inner loop: Compare 'num' with all subsequent elements to find duplicates.
-		// Start from 'i + 1' to avoid re-counting or comparing with itself at the same index.
-		for j := i + 1; j < length; j++ {
+		for j := range length {
 			if num == nums[j] {
 				count++ // Increment count if a duplicate is found.
 			}
